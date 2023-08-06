@@ -1,0 +1,177 @@
+배포 url : https://my-first-project-395008.du.r.appspot.com/
+
+11. 테스트용이지만 과금이 두렵습니다. 어떻게 완전 삭제합니까?
+https://console.cloud.google.com/appengine/settings?hl=ko&project=my-first-project-395008
+어짜피 자동과금 안되니까 걍 냅두세요.
+
+일시정지하려면 좌측 App Engine - 설정 - 어플리케이션 사용중지 누르시면 됩니다.
+
+(데이터 보관 비용은 쪼끔 청구될 수도 있을 듯 합니다)
+
+아예 삭제하려면 파란 상단메뉴에서 원하는 프로젝트 선택 - 좌측 메뉴 IAM 및 관리자 - 설정 - 삭제 누르시면 됩니다. 
+
+ 
+
+d
+
+몽고 아틀라스 : 조일운12gmail/ 루니즵
+https://cloud.mongodb.com/v2/64cc9c25aefe2f353ec8698f#/metrics/replicaSet/64cc9cdb40106e4294dbe849/explorer/todoapp/post/find
+
+몽고DB 데이터 계정 : admin / 30308184
+https://www.youtube.com/watch?v=NoLV5iP5FNY&list=PLfLgtT94nNq1qmsvIii_CAxFlD7tvB5NE&index=2
+
+
+<Ep.0>
+서버 : 클라이언트의 요청에 따라 응답하는 프로그램
+
+<Ep.1>
+요청은 4가지 방식이 있음
+1. 읽기(Get)
+2. 쓰기(Post)
+3. 수정(Put)
+4. 삭제(Delete)
+
+node.js를 이용해서 javascript문법으로 홈페이지 생성
+
+<Ep.2-1>
+javascript는 html조작을 위해 만들어진 언어
+기존의 html은 정적이었음 but javascript는 html을 조작하여 다이나믹하게 만들어줌
+js 해석은 브라우저(크롬,fire fox 등)가 함
+크롬은 v8이라는 js해석엔진을 쓰는데 기능이 매우좋아서 빠름, 여기서 나온게 node.js임
+node.js덕에 js를 프로그래밍언어처럼 사용하기 시작함
+서버도 매우 쉽게 만들 수 있음
+
+<Ep.2-2>
+node.js 특징 : event-driven, Non-blocking I/O, 코드가 매우 짧고 쉬워서 빠른 개발 가능
+
+Non-blocking I/O : 요청을 한번에 다 받고 처리속도가 빠른 것 부터 먼저 응답함(비동기식)
+
+SNS나 채팅서비스에서 node.js를 활용하면 좋음
+
+
+<Ep.3>
+node.js 18.17.0LTS 설치
+
+구글에 node.js 검색 후 https://nodejs.org/ko 사이트에서 왼쪽에 안정성 높은 버전을 설치 후 실행하고
+cmd에서 node - v 명령어 치면 버전 , node 명령어를 치면 자체적으로 프로그래밍 가능
+
+vscode 실행하고 file > open folder 눌러서 경로 설정
+express 라이브러리 설치 terminal > new terminal > npm init 명령어 입력(npm은 라이브러리) > 영상따라서 하면 package.jason생성됨 > npm install express 명령어 입력 > node_modules설치됨)(라이브러리에 필요한 자료들을 담는 공간)
+*어떤 라이브러리를 썼는지 기록하는게 중요함 보통 package.json에 기록함
+
+<Ep.4>
+server.js 파일 생성 > 
+
+const express = require('express');
+const app = express();
+
+app.listen();
+
+라는 코드 입력(서버를 띄우기 위한 기본 세팅) > 
+
+<Ep.5>
+npm install -g nodemon 명령어 > nodemon server.js (실시간으로 local 작동하게 함,보안 에러 걸리는데 유튜브보고 수정) 
+
+
+<Ep.6>
+bootstrap 설치
+
+
+-----------------------------------
+유료강의 
+
+- API란 (웹개발 시)
+웹 서버와 고객간의 소통방식
+
+- REST API란
+
+- DB의 종류
+	1. 관계형 ( 엑셀처럼 표로 되어있음, oracle, mysql, mariaDB 등) : 대부분 SQL이라는 언어를 사용
+	2. NoSQL ( 하나의 객체로 데이터가 저장 {이름:"kim", 성별:남} 이런식으로, MongoDB ) : 호스팅을 받아 사용
+
+
+nodemon server.js 명령어 입력 후 서버 돌아가있는 상태에서 나갈떄 ctrl + c
+
+
+< 라이브러리 >
+
+npm install -g nodemon : 서버를 계속 실행
+npm install body-parser : 
+npm install mongodb@3.6.4 : mongodb 연결
+npm install ejs : ejs파일 사용
+npm install method-override   : html에서 put/delete 요청
+npm install passport passport-local express-session : 로그인기능 세션관련 3개 라이브러리
+npm install dotenv : 환경변수 사용
+npm install multer : 파일업로드
+
+
+
+
+
+
+* .ejs 파일은 views폴더 안에 있어야 함 , .ejs 파일 안에는 서버데이터를 넣을 수 있음(  <%= 변수이름 %> )
+
+app.use(미들웨어) : 미들웨어를 쓰고 싶을 때
+미들웨어 : 요청-응답 중간에 뭔가 실행되는 코드
+app.use('/', require('./routes/shop')); : /경로로 들어온 사람들에게 이런 미들웨어를 사용하게함
+
+*return done(null, false, { message: '비번틀렸어요' })
+done() : 3개의 파라미터를 가진라이브러리 문법 / done( 서버에러, 성공 시 사용자 DB데이터, 에러메세지)
+아이디/비번이 안맞으면 2번째 파라미터에 false넣으면 됨
+
+* https://cloud.google.com/appengine/docs/standard/nodejs/config/appref#environment_variables
+구글 클라우드 서비스에 올릴 경우 환경변수 세팅 참고. 단, 변수만드는 문법에 등호대신 콜론(:) 사용.
+
+
+검색기능 쓸때 검색키워드가 들어있는 모든 리스트 출력하려면 '정규식'을 쓰면됨
+script안에 /abc/ 이런식으로 
+but 임시방편임 , 게시물이 100만개씩되면 찾는 시간이 오래걸려서 문제가 생김
+그래서 indexing을 사용해서 빠르게 찾게함 -이분검색 (binary search) 을 활용하기 위해 indexing 필요
+
+mongoDB는 검색기능이 띄어쓰기기준으로 되서 search index를 사용해야함
+dabatase에서 post collection에서 search탭 > create search index > visual editor 체크 next > index name : titleSearch , todoapp클릭하고 post 선택 하고  next > refine your index 클릭 > index Analyzer, search Analyzer를 lucene.korean으로 설정(한국어 형태소 분석해서 쓸데없는 조사같은 것들을 제거해줌) > dynamic mapping은 on >
+save changes > create search index > 
+
+
+
+
+mongoDB index : post collection에서 indexes 탭 > create index 클릭
+- 제목(문자) indexing
+{
+  "제목": "text",
+}
+- _id(숫자) indexing
+{
+  "id": 1,
+}
+
+쿼리스트링 활용
+var 자료 = { 이름 : '값', 이름2 : '값2' }
+      $.param(자료)
+
+      $(폼태그).serialize()
+이런식으로 할 수 있음
+
+
+*라우터
+module.exports : 이 파일에서 어떤 변수를 배출하겠다
+require('ㅇㅇ') : ㅇㅇ라는 파일or라이브러리를 가져다 쓰겠다 
+
+
+*JSON.stringify가 뭔데요
+{ }, [ ] 자료 내부에 전부 따옴표를 붙이고 싶으면 JSON.stringify() 함수 안에 넣어주시면 됩니다.
+반대로 { }, [ ] 여기에 따옴표 붙였던걸 떼고 싶으면 JSON.parse() 함수 안에 넣어주시면 됩니다.
+따옴표 왜 붙이냐고요?
+붙이면 JSON이라는 자료가 되는데 일종의 문자자료 취급을 받습니다.
+서버와 실시간 소통할 때는 { } [ ] 이런건 주고받을 수 없습니다.
+문자만 주고받을 수 있습니다.
+그래서 저렇게 따옴표 쳐서 JSON으로 만들어서 전송하기도 합니다. 
+
+
+
+
+
+
+수정, detail링크, 로그인여부확인, 로그인nav 링크, 회원가입페이지, 마이페이지nav, 
+
+
